@@ -16,7 +16,7 @@ export class AppComponent implements OnInit {
 
   constructor(
     private primengConfig: PrimeNGConfig,
-    private translateService: TranslateService
+    //private translateService: TranslateService
   ) {
     this.primengConfig.csp.set({nonce: 'Eskdikejidojdk978Ad8jf'});
   }
@@ -34,16 +34,16 @@ export class AppComponent implements OnInit {
       numeric: [FilterMatchMode.EQUALS, FilterMatchMode.NOT_EQUALS, FilterMatchMode.LESS_THAN, FilterMatchMode.LESS_THAN_OR_EQUAL_TO, FilterMatchMode.GREATER_THAN, FilterMatchMode.GREATER_THAN_OR_EQUAL_TO],
       date: [FilterMatchMode.DATE_IS, FilterMatchMode.DATE_IS_NOT, FilterMatchMode.DATE_BEFORE, FilterMatchMode.DATE_AFTER]
     };
-    this.primengConfig.setTranslation({
+    /* this.primengConfig.setTranslation({
       accept: 'Accept',
       reject: 'Cancel',
       //translations
-    });
-    this.translateService.setDefaultLang('ru');
+    }); */
+    //this.translateService.setDefaultLang('ru');
   }
 
-  translate(lang: string) {
+  /* translate(lang: string) {
     this.translateService.use(lang);
     this.translateService.get('primeng').subscribe(res => this.primengConfig.setTranslation(res));
-  }
+  } */
 }
