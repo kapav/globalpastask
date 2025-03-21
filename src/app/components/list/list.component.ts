@@ -2,30 +2,36 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { DialogService, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { BookService } from '../../services/book/book.service';
 import { Book } from '../../interfaces/book.interface';
 import { Books } from '../../mocks/books.mock';
-import { Footer } from 'primeng/api';
 import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
   imports: [CardModule, ButtonModule, TableModule, DynamicDialogModule],
-  providers: [DialogService],
+  providers: [DialogService, DynamicDialogConfig],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit , OnDestroy {
   loading: boolean = false;
-  books!: Book[];
 
-  constructor(public dialogService: DialogService) {}
+  constructor(
+    public dialogService: DialogService,
+    public config: DynamicDialogConfig,
+    private bookService: BookService,
+  ) {}
 
   ref: DynamicDialogRef | undefined;
 
   ngOnInit() {
-    this.books = Books;
+  }
+
+  get books(): Book[] {
+    return this.bookService.getAll();
   }
 
   add() {
