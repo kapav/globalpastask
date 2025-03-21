@@ -7,7 +7,7 @@
         [loading]="loading"
         (onClick)="add()" />
     </p>
-    <p-table [value]="books" [tableStyle]="{ 'min-width': '50rem' }">
+    <p-table [value]="books" selectionMode="single" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
           <tr>
               <th>Название</th>
@@ -18,7 +18,7 @@
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-book>
-          <tr>
+          <tr (click)="edit(book)">
               <td>{{ book.name }}</td>
               <td>{{ book.author }}</td>
               <td>{{ book.pageCount }}</td>

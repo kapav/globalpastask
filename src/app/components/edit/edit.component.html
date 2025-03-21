@@ -1,0 +1,52 @@
+<form [formGroup]="editForm">
+  <div class="flex flex-column gap-2">
+    <label for="name">Название: </label>
+    <input
+        pInputText
+        id="name"
+        formControlName="name" />
+  </div>
+
+  <div class="flex flex-column gap-2">
+    <label for="author">Автор: </label>
+    <input
+        pInputText
+        id="author"
+        formControlName="author" />
+  </div>
+
+  <div class="flex flex-column gap-2">
+    <label for="pageCount">Число страниц: </label>
+    <input
+        pInputText
+        id="pageCount"
+        formControlName="pageCount" />
+  </div>
+
+  <div class="flex flex-column gap-2">
+    <label for="language">Язык: </label>
+    <input
+        pInputText
+        id="language"
+        formControlName="language" />
+  </div>
+
+  <div class="flex flex-column gap-2">
+    <label for="genre">Жанр: </label>
+    <input
+        pInputText
+        id="genre"
+        formControlName="genre" />
+  </div>
+</form>
+<button
+    pButton
+    pRipple
+    label="Сохранить"
+    class="p-button-success">
+</button>
+<button
+    pButton
+    pRipple
+    label="Отменить">
+</button>
