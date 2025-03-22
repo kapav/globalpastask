@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { FieldsetModule } from 'primeng/fieldset';
+import { ListboxModule } from 'primeng/listbox';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { BookService } from '../../services/book/book.service';
+import { Author } from '../../interfaces/author.interface';
+import { Authors } from '../../mocks/authors.mock';
 
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonModule, FieldsetModule],
+  imports: [ReactiveFormsModule, ButtonModule, ListboxModule],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
 })
 export class EditComponent implements OnInit {
+  authors!: Author[];
   editForm: FormGroup = new FormGroup({
     name: new FormControl(this.config.data.name),
     author: new FormControl(this.config.data.author),
@@ -29,13 +32,21 @@ export class EditComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authors = Authors;
   }
 
   save() {
-
+    console.log('this.editForm:', this.editForm);
+    debugger;
+    this.bookService.update({
+      id: this.config.data.id,
+      ...this.editForm.value,
+    });
+    this.ref.close();
   }
 
   close() {
-
+    debugger;
+    this.ref.close();
   }
 }

@@ -1,5 +1,5 @@
 <form [formGroup]="editForm">
-  <div class="flex flex-column gap-2">
+  <div class="content-control">
     <label for="name">Название: </label>
     <input
         pInputText
@@ -7,15 +7,22 @@
         formControlName="name" />
   </div>
 
-  <div class="flex flex-column gap-2">
+  <div class="content-control">
     <label for="author">Автор: </label>
-    <input
-        pInputText
-        id="author"
-        formControlName="author" />
+    <p-listbox
+      [options]="authors"
+      formControlName="author"
+      optionLabel="author"
+      optionValue="author"
+      [style]="{ width: '15rem' }"
+      [listStyle]="{'max-height': '220px'}">
+      <ng-template let-book pTemplate="item">
+        <div>{{book.author}}</div>
+      </ng-template>
+    </p-listbox>
   </div>
 
-  <div class="flex flex-column gap-2">
+  <div class="content-control">
     <label for="pageCount">Число страниц: </label>
     <input
         pInputText
@@ -23,7 +30,7 @@
         formControlName="pageCount" />
   </div>
 
-  <div class="flex flex-column gap-2">
+  <div class="content-control">
     <label for="language">Язык: </label>
     <input
         pInputText
@@ -31,7 +38,7 @@
         formControlName="language" />
   </div>
 
-  <div class="flex flex-column gap-2">
+  <div class="content-control">
     <label for="genre">Жанр: </label>
     <input
         pInputText
@@ -39,14 +46,16 @@
         formControlName="genre" />
   </div>
 </form>
-<button
-    pButton pRipple
-    (onClick)="save()"
-    label="Сохранить"
-    class="p-button-success">
-</button>
-<button
-    pButton pRipple
-    (onClick)="close()"
-    label="Отменить">
-</button>
+<div class="footer">
+  <button
+      pButton pRipple
+      (click)="save()"
+      label="Сохранить"
+      class="p-button-success">
+  </button>
+  <button
+      pButton pRipple
+      (click)="close()"
+      label="Отменить">
+  </button>
+</div>
