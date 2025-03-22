@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { ListboxModule } from 'primeng/listbox';
+import { DropdownModule } from 'primeng/dropdown';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { BookService } from '../../services/book/book.service';
 import { Author } from '../../interfaces/author.interface';
@@ -10,7 +10,7 @@ import { Authors } from '../../mocks/authors.mock';
 @Component({
   selector: 'app-edit',
   standalone: true,
-  imports: [ReactiveFormsModule, ButtonModule, ListboxModule],
+  imports: [ReactiveFormsModule, ButtonModule, DropdownModule],
   templateUrl: './edit.component.html',
   styleUrl: './edit.component.scss'
 })

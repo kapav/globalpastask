@@ -9,17 +9,13 @@
 
   <div class="content-control">
     <label for="author">Автор: </label>
-    <p-listbox
+    <p-dropdown
       [options]="authors"
       formControlName="author"
       optionLabel="author"
       optionValue="author"
-      [style]="{ width: '15rem' }"
-      [listStyle]="{'max-height': '220px'}">
-      <ng-template let-book pTemplate="item">
-        <div>{{book.author}}</div>
-      </ng-template>
-    </p-listbox>
+      [style]="{ width: '100%' }"
+      [panelStyle]="{'max-height': '220px'}" />
   </div>
 
   <div class="content-control">
