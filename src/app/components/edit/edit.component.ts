@@ -19,6 +19,7 @@ export class EditComponent implements OnInit {
   editForm: FormGroup = new FormGroup({
     name: new FormControl(this.config.data.name),
     author: new FormControl(this.config.data.author),
+    description: new FormControl(this.config.data.description),
     pageCount: new FormControl(this.config.data.pageCount),
     language: new FormControl(this.config.data.language),
     genre: new FormControl(this.config.data.genre),

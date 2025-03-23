@@ -15,7 +15,15 @@
       optionLabel="author"
       optionValue="author"
       [style]="{ width: '100%' }"
-      [panelStyle]="{'max-height': '220px'}" />
+      [panelStyle]="{'max-height': '220px', 'width': '0'}" />
+  </div>
+
+  <div class="content-control">
+    <label for="description">Описание: </label>
+    <textarea
+      rows="5"cols="30"
+      pTextarea
+      formControlName="description"></textarea>
   </div>
 
   <div class="content-control">
