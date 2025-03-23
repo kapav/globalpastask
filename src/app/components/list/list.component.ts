@@ -5,7 +5,6 @@ import { TableModule } from 'primeng/table';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { BookService } from '../../services/book/book.service';
 import { Book } from '../../interfaces/book.interface';
-import { Books } from '../../mocks/books.mock';
 import { EditComponent } from '../edit/edit.component';
 
 @Component({
@@ -35,16 +34,9 @@ export class ListComponent implements OnInit , OnDestroy {
   }
 
   add() {
-      this.loading = true;
-
-      setTimeout(() => {
-          this.loading = false;
-      }, 2000);
-  }
-
-  edit(book: Book) {
+    const isAdd = true;
     this.ref = this.dialogService.open(EditComponent, {
-      header: 'Редактирование книги',
+      header: 'Добавление книги',
       width: '50vw',
       modal: true,
       contentStyle: { overflow: 'auto' },
@@ -52,7 +44,29 @@ export class ListComponent implements OnInit , OnDestroy {
           '960px': '75vw',
           '640px': '90vw'
       },
-      data: {...book},
+      data: {
+        isAdd,
+      },
+    });
+  }
+
+  edit(isAdd: boolean, book?: Book): void {
+    const data = isAdd ? {
+      isAdd,
+    } : {
+      isAdd,
+      ...book,
+    };
+    this.ref = this.dialogService.open(EditComponent, {
+      header: (isAdd ? 'Добавление' : 'Редактирование') + ' книги',
+      width: '50vw',
+      modal: true,
+      contentStyle: { overflow: 'auto' },
+      breakpoints: {
+          '960px': '75vw',
+          '640px': '90vw',
+      },
+      data,
     });
     console.log('book:', book);
     console.log('dialogService:', this.dialogService);

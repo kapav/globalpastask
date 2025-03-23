@@ -5,7 +5,7 @@
         label="Добавить"
         icon="pi pi-check"
         [loading]="loading"
-        (onClick)="add()" />
+        (onClick)="edit(true)" />
     </p>
     <p-table [value]="books" selectionMode="single" [tableStyle]="{ 'min-width': '50rem' }">
       <ng-template pTemplate="header">
@@ -18,7 +18,7 @@
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-book>
-          <tr (click)="edit(book)">
+          <tr (click)="edit(false, book)">
               <td>{{ book.name }}</td>
               <td>{{ book.author }}</td>
               <td>{{ book.pageCount }}</td>

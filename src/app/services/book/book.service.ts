@@ -7,9 +7,17 @@ import { Books } from '../../mocks/books.mock';
 })
 export class BookService {
   private books!: Book[];
+  private createGetNewId = (init: number) => {
+    let newId = init;
+    return () => ++newId;
+  };
+  public getNewId;
 
   constructor() {
     this.books = Books;
+    this.getNewId = this.createGetNewId(Math.max(
+      ...this.books.map(item => item.id)
+    ));
   }
 
   getAll(): Book[] {

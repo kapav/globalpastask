@@ -36,10 +36,13 @@
 
   <div class="content-control">
     <label for="language">Язык: </label>
-    <input
-        pInputText
-        id="language"
-        formControlName="language" />
+    <p-dropdown
+      [options]="languages"
+      formControlName="language"
+      optionLabel="language"
+      optionValue="language"
+      [style]="{ width: '100%' }"
+      [panelStyle]="{'max-height': '220px', 'width': '0'}" />
   </div>
 
   <div class="content-control">
@@ -49,6 +52,11 @@
         id="genre"
         formControlName="genre" />
   </div>
+
+  <p-messages
+      [(value)]="messages"
+      [enableService]="false"
+      [closable]="false" />
 </form>
 <div class="footer">
   <button
