@@ -4,19 +4,24 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MultiSelectModule } from 'primeng/multiselect';
 import { BookService } from '../../services/book/book.service';
 import { Book } from '../../interfaces/book.interface';
+import { Author } from '../../interfaces/author.interface';
+import { Authors } from '../../mocks/authors.mock';
 import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardModule, ButtonModule, TableModule, DynamicDialogModule, PaginatorModule],
+  imports: [CardModule, ButtonModule, TableModule, DynamicDialogModule, PaginatorModule, MultiSelectModule],
   providers: [DialogService, DynamicDialogConfig],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
 })
 export class ListComponent implements OnInit , OnDestroy {
+  authors!: Author[];
+
   constructor(
     public dialogService: DialogService,
     public config: DynamicDialogConfig,
@@ -26,6 +31,7 @@ export class ListComponent implements OnInit , OnDestroy {
   ref: DynamicDialogRef | undefined;
 
   ngOnInit() {
+    this.authors = Authors;
   }
 
   get books(): Book[] {
