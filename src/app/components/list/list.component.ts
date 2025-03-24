@@ -5,6 +5,9 @@ import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogService, DynamicDialogConfig, DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { CommonModule } from '@angular/common';
 import { BookService } from '../../services/book/book.service';
 import { Book } from '../../interfaces/book.interface';
 import { Author } from '../../interfaces/author.interface';
@@ -14,7 +17,7 @@ import { EditComponent } from '../edit/edit.component';
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CardModule, ButtonModule, TableModule, DynamicDialogModule, PaginatorModule, MultiSelectModule],
+  imports: [CardModule, ButtonModule, TableModule, DynamicDialogModule, PaginatorModule, MultiSelectModule, InputTextModule, DropdownModule, CommonModule],
   providers: [DialogService, DynamicDialogConfig],
   templateUrl: './list.component.html',
   styleUrl: './list.component.scss'
@@ -57,7 +60,6 @@ export class ListComponent implements OnInit , OnDestroy {
       data,
     });
     console.log('book:', book);
-    console.log('dialogService:', this.dialogService);
   }
 
   ngOnDestroy() {

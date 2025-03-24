@@ -37,15 +37,11 @@
                     [options]="authors"
                     placeholder="Любой"
                     (onChange)="filter($event.value)"
-                    optionLabel="name">
+                    optionLabel="author">
                   <ng-template let-option pTemplate="item">
                     <div class="inline-block vertical-align-middle">
-                      <img
-                        [alt]="option.label" src="https://primefaces.org/cdn/primeng/images/demo/avatar/{{ option.image }}"
-                        width="24"
-                        class="vertical-align-middle" />
                       <span class="ml-1 mt-1">
-                        {{ option.name }}
+                        {{ option.author }}
                       </span>
                     </div>
                   </ng-template>
